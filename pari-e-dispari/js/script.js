@@ -18,37 +18,39 @@ button.addEventListener('click',
         const randomComputer = getRndInteger(1, 5);
         const computerText = document.getElementById('pc-number');
         computerText.innerHTML += ' ' + randomComputer;
-
-        // funzione per genrare un numero random
-        function getRndInteger(min, max) {
-            return Math.floor(Math.random() * (5 - 1) ) + 1;
-        } 
-
+            
         // somma due numeri
         const textSum = document.getElementById('somma');
         const sum = userNumber + randomComputer;
         textSum.innerHTML += sum;
         
-        // creo funzione per sapere se la somma è pari o dispari
-        function sumEvenOrOdd(num1, num2) {
-            const vincitore = document.getElementById('vincitore');
-            let winner;
-            if(userEvenOrOdd === 'pari' && sum % 2 === 0) {
-                winner = 'Hai Vinto!';
-            } else if(userEvenOrOdd === 'dispari' && sum % 2 !== 0){
-                winner = 'Hai Vinto!';
-            } else {
-                winner = 'Hai Perso!';
-            }
-
-            return winner;
-        }
-
-        vincitore.innerHTML += sumEvenOrOdd(userNumber, randomComputer);
+        // stampo in pagina il vincitore tramite la funzione sumEvenOrOdd
+        const vincitore = document.getElementById('vincitore');
+        vincitore.innerHTML += sumEvenOrOdd(userEvenOrOdd, sum);
     }
 )
 
+// --------------
+// FUNZIONI
+// --------------
+// funzione per genrare un numero random
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min) ) + min;
+}
 
+ // funzione per sapere se la somma è pari o dispari
+ function sumEvenOrOdd(evenOrOdd, sum) {
+    let winner;
+    if(evenOrOdd === 'pari' &&  sum % 2 === 0) {
+        winner = 'Hai Vinto!';
+    } else if(evenOrOdd === 'dispari' && sum % 2 !== 0){
+        winner = 'Hai Vinto!';
+    } else {
+        winner = 'Hai Perso!';
+    }
+
+    return winner;
+}
 
 
 
